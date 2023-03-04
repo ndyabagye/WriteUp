@@ -1,45 +1,27 @@
+/* eslint-disable react-native/no-inline-styles */
+import 'react-native-gesture-handler';
 import React from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
-import NoteCard from './src/components/NoteCard';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {NavigationContainer} from '@react-navigation/native';
+import Notes from './src/screens/Notes';
+import Settings from './src/screens/Settings';
+
+// const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 const App = () => {
   return (
-    <>
-      <ScrollView style={styles.page}>
-        <NoteCard title="One" />
-        <NoteCard title="Two" />
-        <NoteCard title="One" />
-        <NoteCard title="Two" />
-        <NoteCard title="One" />
-        <NoteCard title="Two" />
-        <NoteCard title="One" />
-        <NoteCard title="Two" />
-        <NoteCard title="One" />
-        <NoteCard title="Two" />
-        <NoteCard title="One" />
-        <NoteCard title="Two" />
-        <NoteCard title="One" />
-        <NoteCard title="Two" />
-        <NoteCard title="One" />
-        <NoteCard title="Two" />
-        <NoteCard title="One" />
-        <NoteCard title="Two" />
-        <NoteCard title="One" />
-        <NoteCard title="Two" />
-        <NoteCard title="One" />
-        <NoteCard title="Two" />
-        <NoteCard title="One" />
-        <NoteCard title="Two" />
-      </ScrollView>
-    </>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Drawer.Navigator initialRouteName="Notes">
+          <Drawer.Screen name="Notes" component={Notes} />
+          <Drawer.Screen name="Settings" component={Settings} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
-
-const styles = StyleSheet.create({
-  page: {
-    flex: 1,
-    paddingHorizontal: 20,
-  },
-});
 
 export default App;
